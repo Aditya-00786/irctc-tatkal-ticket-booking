@@ -52,7 +52,6 @@ For a detailed walkthrough, open [`how-to-use.html`](how-to-use.html) in your br
 | `popup.html` / `popup.js` / `popup.css` | Extension popup UI |
 | `options.html` / `options.css` | Options page |
 | `assets/` | Icons |
-| `*.py` | Build/patch helper scripts |
 
 ## Permissions
 
