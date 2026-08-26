@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Tatkal Ticket Booking</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <div class="header-left">
+        <img src="assets/icon-32.png" alt="Logo" class="logo">
+        <h1 class="title">Tatkal Booking</h1>
+      </div>
+      <button id="settings-btn" class="icon-btn" title="Open Full Settings">
+        <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SettingsIcon"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"></path></svg>
+      </button>
+    </header>
+
+    <div class="popup-body">
+      <div class="status-card">
+        <div class="status-header">
+          <div class="status-text">
+            <span class="status-label">Automation is</span>
+            <span id="automation-status-text" class="status-value">OFF</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="automation-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div id="status-info" class="status-info"></div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half" style="position: relative;">
+          <label for="from">From</label>
+          <input type="text" id="from" autocomplete="off" placeholder="Station name or code">
+          <ul id="from-list" class="autocomplete-list"></ul>
+        </div>
+        <div class="form-group half" style="position: relative;">
+          <label for="to">To</label>
+          <input type="text" id="to" autocomplete="off" placeholder="Station name or code">
+          <ul id="to-list" class="autocomplete-list"></ul>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Journey Date</label>
+        <input type="date" id="date">
+      </div>
+
+      <div class="form-group" style="position: relative;">
+        <label for="trainNumber">Train Number</label>
+        <input type="text" id="trainNumber" autocomplete="off" placeholder="Train name or number">
+        <ul id="train-list" class="autocomplete-list"></ul>
+        <div id="train-warning" class="warning-text hidden" style="color: #d32f2f; font-size: 12px; margin-top: 4px;"></div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="quotaType">Quota Type</label>
+          <select id="quotaType">
+            <option value="GENERAL">GENERAL</option>
+            <option value="TATKAL">TATKAL</option>
+            <option value="PREMIUM TATKAL">PREMIUM TATKAL</option>
+          </select>
+        </div>
+        <div class="form-group half">
+          <label for="accommodationClass">Class</label>
+          <select id="accommodationClass">
+            <option value="" disabled selected hidden>Select Class</option>
+            <option value="SL">SL</option>
+            <option value="3A">3A</option>
+            <option value="2A">2A</option>
+            <option value="1A">1A</option>
+            <option value="3E">3E</option>
+            <option value="EC">EC</option>
+            <option value="CC">CC</option>
+            <option value="EV">EV</option>
+            <option value="2S">2S</option>
+            <option value="FC">FC</option>
+            <option value="VC">VC</option>
+            <option value="VS">VS</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="autoUpgradation">
+          <span>Consider for Auto Upgradation</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="noFoodAndBeverages">
+          <span>No Food and Beverages</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="confirmBerthsOnly">
+          <span>Book only if confirmed berths are allotted</span>
+        </label>
+      </div>
+
+      <div class="passengers-section">
+        <div class="section-title">Selected Passengers</div>
+        <div id="passengers-list" class="passengers-list"></div>
+      </div>
+    </div>
+
+    <div class="popup-footer">
+      <div id="unsaved-warning" class="unsaved-warning hidden">
+        <span class="warning-icon">⚠</span> Unsaved changes
+      </div>
+      <button id="save-btn" class="save-btn" disabled>Save Booking Details</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

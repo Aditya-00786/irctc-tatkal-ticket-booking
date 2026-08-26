@@ -1,0 +1,1 @@
+PF=function(){const e=(t=12345,()=>{let e=t+=1831565813;return e=Math.imul(e^e>>>15,1|e),e^=e+Math.imul(e^e>>>7,61|e),((e^e>>>14)>>>0)/4294967296});var t;return(t,n)=>t+(n-t)*e()}
